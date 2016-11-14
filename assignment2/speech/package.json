@@ -1,0 +1,15 @@
+{
+  "name": "speech",
+  "version": "1.0.0",
+  "description": "assignment 2 of CTH 2016, a randomized speech tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vivien",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.0.4",
+    "word-wrap": "^1.1.0"
+  }
+}
