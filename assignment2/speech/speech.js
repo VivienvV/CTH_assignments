@@ -2,7 +2,7 @@
 
 /*
 	file: 	letter.js
-	desc: 	simple script that generates a (skeleton) presidentials speech
+	desc: 	simple script that generates a (skeleton) presidential speech
 			based on Christopher Stratchey's Love Letter as 
 			analysed by Noah Wardrip-Fruin in "Digital Media Archeology"
 	author: vivien
@@ -38,9 +38,9 @@ const subjects = ['THE ENVIRONMENT', 'THE ECONOMY', 'THE BOURGEOISE', 'THE POOR'
 
 const foreign = ['WELCOME', 'BRING IN', 'DEPORT', 'SEND AWAY', 'THROW OUT', 'TOLERATE', 'OPEN OUR BORDERS FOR', 'KEEP OUT'];
 
-const number = ['ALL', 'MORE', 'LESS', 'QUITE SOME', 'NO'];
+const number = ['ALL', 'MORE', 'LESS', 'QUITE SOME', 'NO', 'ANY'];
 
-const phrases = ['THANK YOU!', 'GOD BLESS YOU!', 'MAKE THIS COUNTRY GREAT AGAIN!', 'YES WE CAN!', 'I LOVE YOU!', 'WE STAND UNITED!', 'THE ONLY THING WE HAVE TO FEAR IS FEAR ITSELF!', 'PEACE!', 'OUR FUTURE IS A BRIGHT ONE!', 'THANK YOU FOR ELECTING ME!', 'STAY STRONG!']
+const phrases = ['THANK YOU!', 'GOD BLESS YOU!', 'MAKE THIS COUNTRY GREAT AGAIN!', 'YES WE CAN!', 'YOU ARE ALL WONDERFUL PEOPLE!', 'WE STAND UNITED!', 'THE ONLY THING WE HAVE TO FEAR IS FEAR ITSELF!', 'PEACE!', 'OUR FUTURE IS A BRIGHT ONE!', 'THANK YOU FOR ELECTING ME!', 'STAY STRONG!']
 
 /**
 *	Picks a random element from an array
