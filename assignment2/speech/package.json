@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "chance": "^1.0.4",
+    "commander": "^2.9.0",
     "word-wrap": "^1.1.0"
   }
 }

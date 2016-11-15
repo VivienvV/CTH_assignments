@@ -9,11 +9,11 @@
 	date: 	12/11/16
 */
 
-// import chance (http://chancejs.com)
-var chance = require('chance').Chance(); // npm install --save chance
+	var chance = require('chance').Chance(); 
 
-// import word-wrap (https://www.npmjs.com/package/word-wrap)
-var wrap = require('word-wrap'); // npm install --save word-wrap
+	var wrap = require('word-wrap'); 
+
+	var program = require('commander');
 
 // All possible words
 const first = ['HONARABLE', 'DEAR', 'GOOD', 'BRAVE'];
@@ -42,36 +42,62 @@ const number = ['ALL', 'MORE', 'LESS', 'QUITE SOME', 'NO', 'ANY'];
 
 const phrases = ['THANK YOU!', 'GOD BLESS YOU!', 'MAKE THIS COUNTRY GREAT AGAIN!', 'YES WE CAN!', 'YOU ARE ALL WONDERFUL PEOPLE!', 'WE STAND UNITED!', 'THE ONLY THING WE HAVE TO FEAR IS FEAR ITSELF!', 'PEACE!', 'OUR FUTURE IS A BRIGHT ONE!', 'THANK YOU FOR ELECTING ME!', 'STAY STRONG!']
 
-/**
-*	Picks a random element from an array
-*	@param {Array} array
-*	@return {Object} choice
-*/
-function choice(array) {
-	var index = chance.natural({'min': 0, 'max': array.length - 1});  // **** NOTE: 'max': array.length - 1
-	return array[index];
+
+	//Picks a random element from an array
+	function choice(array) {
+	var index =  chance.natural({'min': 0, 'max': array.length - 1}); 
+	return array[index]; 
 }
 
-/**
-*	Randomly picks or not a random element from an array
-*	@param {Array} array
-*	@return {Object} choice 
-* 	@return {String} empty string
-*/
-function maybe(array) {
+	//Randomly picks or not a random element from an array
+	function maybe(array) {
 	if( chance.bool() ) {
 		return choice(array);
 	} else {
 		return '';
 	}
 }
+//----------------------------------------------------------------------------------------------------
+//SENTENCE STRUCTURE, structure of independent sentences are set here
 
-/**
-*	Generates a sentence composed of randomly chosen 
-*	countries, adjectives, nouns, adverbs, verbs, phrases, subjects and numerals.
-*	@return {String} sentence
-*/
-function long() {
+//generates the greeting
+function greeting() {
+	return choice(first) + ' ' + choice(people) + ' ' + 'OF ' + choice(countries) + ',\n\n';
+}
+
+//generates a word of thanks towards to the audience
+function thankyou() {
+	return 'IT WAS YOUR ' + maybe(adjectives) + choice(nouns) + ' THAT ' + maybe(adverbs) + choice(past) + ' ' +
+			'MY ' + maybe(adjectives) + choice(nouns) + ' FOR THIS COUNTRY. '; 
+}
+
+//generates an extra thank you for your wonderful people
+function thanks_extra() {
+	return choice(thanks);
+
+}
+//generates one of the views your new president has for the country
+function first_policy() {
+	return 'AS YOUR ' + maybe(adjectives) + 'LEADER, I PROMISE TO ' + choice(verbs) + ' ' + choice(subjects) + '. ';			
+}
+
+//generates another great idea your president has
+function second_policy() {
+	return 'I WILL ' + maybe(adverbs) + choice(verbs) + ' ' + choice(subjects) + '. ';
+}
+
+//generates the policy your president has towards foreigners 
+function foreign_policy() {
+	return 'I WILL ' + choice(foreign) + ' ' + choice(number) + ' ' + choice(people) + ' FROM ' + choice(countries) + '. ' ;
+}
+ 
+ //generates a strong and catchy oneliner to end your speech with a bang
+function ending() {
+	return '\n\n' + choice(phrases);
+}
+
+//generates the complete speech experience
+function complete() {
 			return 	choice(first) + ' ' + choice(people) + ' ' + 'OF ' + choice(countries) + ',\n\n' + 
 					'IT WAS YOUR ' + maybe(adjectives) + choice(nouns) + 
 					' THAT ' + maybe(adverbs) + choice(past) + ' ' +
@@ -82,19 +108,54 @@ function long() {
 					'.' + '\n\n' + choice(phrases) + '\n' + 'YOUR PRESIDENT';
 }
 
-// format for the output (header)
-console.log('\n\n\n\n'); 
+//-----------------------------------------------------------------------------------------------------------------------------
+		//commander
+
+		program
+		  .version('0.0.1')
+		  .option('-a, --amount [number]', 'Number of sentences generated', "empty")
+		  .option('-w, --width [number]', 'Width of sentences in chacter number', "empty")
+		  .parse(process.argv);
+	
+	parseInt(program.width) || 65;
+	parseInt(program.amount) || 5;
+		 
+
+//----------------------------------------------------------------------------------------------------------------------------
+//SPEECH STRUCTURE
 
 var text = '';
 
-// loop for generating certain amount of sentence. Currently set as 1.
-for(var i = 0; i < 1; i++) {
+console.log('\n\n');
 
-	text += long();	
+console.log(greeting());//text += greeting()
+
+for(var i = 0; i < program.amount; i++) {
+		var c = choice(['first', 'second', 'third', 'fourth', 'fifth']);
+		if(c == 'first') {    		
+			text += thankyou();
+		} 
+		else if (c == 'second') {
+    		text += thanks_extra();
+		} 
+		else if(c == 'third') {
+    		text += first_policy();
+    	}
+    	else if(c == 'fourth') {
+    		text += second_policy();
+    	}
+    	else if(c == 'fifth') {
+    		text += foreign_policy();
+    	}
 }
 
-// width of sentences in amount of character
-console.log(wrap(text, {'width': 70}));
+//makes width configurable from the command line
+console.log(wrap(text, {'width': program.width}));
 
-// format for the output (footer)
-console.log('\n\n\n\n');
+console.log(ending());
+
+console.log('\n'); 
+
+console.log("YOUR PRESIDENT");
+
+console.log('\n\n');
