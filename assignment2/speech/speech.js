@@ -68,14 +68,9 @@ function greeting() {
 //generates a word of thanks towards to the audience
 function thankyou() {
 	return 'IT WAS YOUR ' + maybe(adjectives) + choice(nouns) + ' THAT ' + maybe(adverbs) + choice(past) + ' ' +
-			'MY ' + maybe(adjectives) + choice(nouns) + ' FOR THIS COUNTRY. '; 
+			'MY ' + maybe(adjectives) + choice(nouns) + ' FOR THIS COUNTRY. ' + maybe(thanks); 
 }
 
-//generates an extra thank you for your wonderful people
-function thanks_extra() {
-	return choice(thanks);
-
-}
 //generates one of the views your new president has for the country
 function first_policy() {
 	return 'AS YOUR ' + maybe(adjectives) + 'LEADER, I PROMISE TO ' + choice(verbs) + ' ' + choice(subjects) + '. ';			
@@ -98,14 +93,14 @@ function ending() {
 
 //generates the complete speech experience
 function complete() {
-			return 	choice(first) + ' ' + choice(people) + ' ' + 'OF ' + choice(countries) + ',\n\n' + 
+			return 	'\n\n' + choice(first) + ' ' + choice(people) + ' ' + 'OF ' + choice(countries) + ',\n\n' + 
 					'IT WAS YOUR ' + maybe(adjectives) + choice(nouns) + 
 					' THAT ' + maybe(adverbs) + choice(past) + ' ' +
 					'MY ' + maybe(adjectives) + choice(nouns) + ' FOR THIS COUNTRY. ' + maybe(thanks) +
 					'AS YOUR ' + maybe(adjectives) + 'LEADER, I PROMISE TO ' + choice(verbs) + ' ' + choice(subjects) +
 					' AND TO ' + maybe(adverbs) + choice(verbs) + ' ' + choice(subjects) + 
 					'. ALSO, I WILL ' + choice(foreign) + ' ' + choice(number) + ' ' + choice(people) + ' FROM ' + choice(countries) +
-					'.' + '\n\n' + choice(phrases) + '\n' + 'YOUR PRESIDENT';
+					'.' + '\n\n' + choice(phrases) + '\n' + 'YOUR PRESIDENT' + '\n\n';
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -116,41 +111,41 @@ function complete() {
 		  .option('-a, --amount [number]', 'Number of sentences generated', "empty")
 		  .option('-w, --width [number]', 'Width of sentences in chacter number', "empty")
 		  .parse(process.argv);
-	
-	parseInt(program.width) || 65;
-	parseInt(program.amount) || 5;
+
+
+	var w = program.width || 65;
+	var a = program.amount || 5;
 		 
 
 //----------------------------------------------------------------------------------------------------------------------------
 //SPEECH STRUCTURE
 
-var text = '';
 
-console.log('\n\n');
+	var text = '';
 
-console.log(greeting());//text += greeting()
+	console.log('\n\n');
 
-for(var i = 0; i < program.amount; i++) {
-		var c = choice(['first', 'second', 'third', 'fourth', 'fifth']);
-		if(c == 'first') {    		
-			text += thankyou();
-		} 
-		else if (c == 'second') {
-    		text += thanks_extra();
-		} 
-		else if(c == 'third') {
-    		text += first_policy();
-    	}
-    	else if(c == 'fourth') {
-    		text += second_policy();
-    	}
-    	else if(c == 'fifth') {
-    		text += foreign_policy();
-    	}
-}
+	console.log(greeting());//text += greeting()
+
+	for(var i = 0; i < a; i++) {
+			var c = choice(['first', 'second', 'third', 'fourth']);
+			if(c == 'first') {    		
+				text += thankyou(); 		
+			} 
+			else if(c == 'second') {
+	    		text += first_policy();
+	    	}
+	    	else if(c == 'third') {
+	    		text += second_policy();
+	    	}
+	    	else if(c == 'fourth') {
+	    		text += foreign_policy();
+    		}
+	}
+
 
 //makes width configurable from the command line
-console.log(wrap(text, {'width': program.width}));
+console.log(wrap(text, {'width': w}));
 
 console.log(ending());
 
@@ -159,3 +154,4 @@ console.log('\n');
 console.log("YOUR PRESIDENT");
 
 console.log('\n\n');
+
