@@ -42,6 +42,9 @@ const feel = ['My day has been', "I'm feeling", 'I feel'];
 
 const polite = ["you're welcome", 'anytime', 'my pleasure', 'how polite of you']
 
+const fun = ['hahahahaha.', "yes, it's very funny.", "well at least one of us thinks it's funny...", "I'm glad to see you're enjoying our conversation!"];
+
+const react = ['how interesting.', 'sounds like you have an exciting life!', 'oh really?', "that's disturbing...", 'hahaha', 'what a nice story.'];
 
 /*--------------------------------------------------
     RANDOM SENTENCE FUNCTIONS
@@ -73,7 +76,7 @@ const polite = ["you're welcome", 'anytime', 'my pleasure', 'how polite of you']
   // Generates a sentence composed of randomly chosen feelings and events of that day
 
   function day() { 
-    return choice(feel) + " " + choice(adjectives) + ', because ' + choice(happen) + " " + choice(verbs) + '.'; 
+    return choice(feel) + " " + choice(adjectives) + ', because ' + choice(happen) + " " + choice(verbs) + '.' + maybe("How was your day?"); 
   }
 
   //function (){
@@ -95,6 +98,10 @@ var pattern_3 = ['how do I look', 'am I pretty', "do I look", 'rate my appearanc
 var pattern_4 = ['really?', 'are you sure?', 'seriously?', 'for real?']
 
 var pattern_5 = ['thank you', 'thanks', 'kind', 'sweet', 'aww']
+
+var pattern_6 = ['haha', 'funny', 'laugh']
+
+var pattern_7 = ['my day', 'today I']
 
 
 /*--------------------------------------------------
@@ -141,6 +148,10 @@ function answer(msg) {
     return choice(extra)
   } else if(matches(msg, pattern_5)) {
     return choice(polite) + '.'
+  } else if(matches(msg, pattern_6)) {
+    return choice(fun)
+  } else if(matches(msg, pattern_7)) {
+    return choice(react)
   } else {
     return "Sorry, I don't understand that";
   }
