@@ -1,0 +1,11 @@
+ASSIGNMENT 3 CTH
+Vivien van Veldhuizen
+22-11-16
+
+--------------------------------
+
+Very simple artificial intelligence script. To use:
+
+	$ node server
+
+Script will reply to questions such as how their day was and how you look today. 

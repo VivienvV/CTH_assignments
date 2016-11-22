@@ -121,7 +121,10 @@ function complete() {
 //SPEECH STRUCTURE
 
 
-	var text = '';
+
+
+
+var text = '';
 
 	console.log('\n\n');
 
@@ -155,3 +158,9 @@ console.log("YOUR PRESIDENT");
 
 console.log('\n\n');
 
+ if(program.amount == undefined ) { 
+ 	return complete() 
+// 	console.log(wrap(text, {"width": 50}));
+ } 	else { 
+ 		return "";
+ 	}
