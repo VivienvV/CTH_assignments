@@ -46,6 +46,8 @@ const fun = ['hahahahaha.', "yes, it's very funny.", "well at least one of us th
 
 const react = ['how interesting.', 'sounds like you have an exciting life!', 'oh really?', "that's disturbing...", 'hahaha', 'what a nice story.'];
 
+const question = [' How was your day?', ' But tell me about your day!', ' What about you?']
+
 /*--------------------------------------------------
     RANDOM SENTENCE FUNCTIONS
 --------------------------------------------------*/
@@ -76,7 +78,7 @@ const react = ['how interesting.', 'sounds like you have an exciting life!', 'oh
   // Generates a sentence composed of randomly chosen feelings and events of that day
 
   function day() { 
-    return choice(feel) + " " + choice(adjectives) + ', because ' + choice(happen) + " " + choice(verbs) + '.' + maybe("How was your day?"); 
+    return choice(feel) + " " + choice(adjectives) + ', because ' + choice(happen) + " " + choice(verbs) + '.' + maybe(question); 
   }
 
   //function (){
