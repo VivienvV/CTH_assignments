@@ -93,7 +93,7 @@ const question = [' How was your day?', ' But tell me about your day!', ' What a
 
 var pattern_1 = ["what's up", 'hello', 'hi', 'hey'];
 
-var pattern_2 = ['how are you', 'how do you do', 'how is', 'how was', "how's", "how is it going", "how do you feel"];
+var pattern_2 = ['how are you', 'how do you do', 'how is', 'how was', "how's", "how is it going", "how do you feel", 'What about you'];
 
 var pattern_3 = ['how do I look', 'am I pretty', "do I look", 'rate my appearance'];
 
@@ -103,7 +103,7 @@ var pattern_5 = ['thank you', 'thanks', 'kind', 'sweet', 'aww']
 
 var pattern_6 = ['haha', 'funny', 'laugh']
 
-var pattern_7 = ['my day', 'today I']
+var pattern_7 = ['my day', 'today I', 'I feel', "I'm feeling"]
 
 
 /*--------------------------------------------------

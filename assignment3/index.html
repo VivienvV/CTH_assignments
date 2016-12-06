@@ -69,12 +69,12 @@
 
 		  // when connecting 
 		  socket.on('connect', function (data) {
-		  	console.log('human connected');
+		  	console.log('user has connected to server');
 		  });
 
 		  // when receiving a custom message form the server ('message from robot') 
 		  // > means robot, * means human
-		  socket.on('message from robot', function(msg) {
+		  socket.on('message from chatrobot', function(msg) {
 
 		  	document.getElementById("conversation").value += '> ' + msg + '\n';
 
